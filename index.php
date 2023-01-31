@@ -11,12 +11,28 @@
 <body>
     <?php
     use AltoRouter as Router;
+    use db\connect;
+    require_once 'connect/connect.php';
     require_once __DIR__ . '/vendor/autoload.php';
 
+    /** 
+     * ตัวอย่างการใช้งาน Router
+     */
     $router = new Router();
-    $router->map( "GET", "/home", function() {
-        echo 'page/home.php';
+    $router->map("GET", "/home", function () {
+        echo "home";
     });
+    
+
+    /** 
+     * ตัวอย่างการใช้งาน connect
+    */
+    $con = new connect();
+    $stmt = $con->connect()->prepare("SELECT * FROM user");
+    $stmt->execute();
+    $row = $stmt->fetchAll();
+    echo "<pre>";
+    print_r($row);
     ?>
 </body>
 
