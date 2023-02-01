@@ -1,39 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+use AltoRouter as Router;
 
-<body>
-    <?php
-    use AltoRouter as Router;
-    use db\connect;
-    require_once 'connect/connect.php';
-    require_once __DIR__ . '/vendor/autoload.php';
+require_once realpath(__DIR__ . '/vendor/autoload.php');
 
-    /** 
-     * ตัวอย่างการใช้งาน Router
-     */
-    $router = new Router();
-    $router->map("GET", "/home", function () {
-        echo "home";
-    });
-    
+/** 
+ * ตัวอย่างการใช้งาน Router
+ */
+$router = new Router();
 
-    /** 
-     * ตัวอย่างการใช้งาน connect
-    */
-    $con = new connect();
-    $stmt = $con->connect()->prepare("SELECT * FROM user");
-    $stmt->execute();
-    $row = $stmt->fetchAll();
-    echo "<pre>";
-    print_r($row);
-    ?>
-</body>
+$router->map("GET", '/home', function () {
+    require __DIR__ . "/page/home.php";
+});
 
-</html>
+$match = $router->match();
+if (is_array($match) && is_callable($match['target'])) {
+    call_user_func_array($match['target'], $match['params']);
+} else {
+    echo "ไม่พบหน้าที่ต้องการ";
+}

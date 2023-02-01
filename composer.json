@@ -1,6 +1,7 @@
 {
     "require": {
         "firebase/php-jwt": "^6.3",
-        "altorouter/altorouter": "^2.0"
+        "altorouter/altorouter": "^2.0",
+        "vlucas/phpdotenv": "^5.5"
     }
 }
