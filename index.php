@@ -9,7 +9,7 @@ require_once realpath(__DIR__ . '/vendor/autoload.php');
  */
 $router = new Router();
 
-$router->map("GET", '/home', function () {
+$router->map("GET", '/api/v1/home', function () {
     require __DIR__ . "/page/home.php";
 });
 
