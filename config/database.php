@@ -1,8 +1,5 @@
 <?php
 
-use PDO;
-use PDOException;
-
 class Database {
 
     private $localhost;
