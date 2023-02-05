@@ -29,9 +29,15 @@ $router->map("GET", "/api/v1/jwt", function () {
   require_once __DIR__ . "/test/testapi.php";
 });
 
+$router->map("GET", '/home', function () {
+    require __DIR__ . "/page/home.php";
+});
+
 $match = $router->match();
 if( is_array($match) && is_callable( $match['target'] ) ) {
   call_user_func_array( $match['target'], $match['params'] );
 } else {
   echo "ไม่พบหน้าที่ต้องการ";
 }
+
+?>
