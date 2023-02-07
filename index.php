@@ -25,8 +25,8 @@ $router->map("GET", "/test/api", function () {
   require_once __DIR__ . "/test/testapi.php";
 });
 
-$router->map("GET", "/api/v1/jwt", function () {
-  require_once __DIR__ . "/test/testapi.php";
+$router->map("GET", "/api/v1/controller", function () {
+  require_once __DIR__ . "/test/api.php";
 });
 
 $router->map("GET", '/home', function () {
